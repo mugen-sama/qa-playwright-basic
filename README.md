@@ -49,6 +49,12 @@ npx playwright test
 npx playwright test --ui
 ```
 
+5. Run specific file
+
+```
+npx playwright test login.demo.spec.ts --reporter=html
+```
+
 ## 📊 Report
 
 After running test:
