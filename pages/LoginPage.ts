@@ -42,7 +42,7 @@ export class LoginPage {
     }
 
     // Optional - to verify specific error message text
-    async verifyErrorMessageContains(text: string) {
+    async verifyLoginErrorMessage(text: string) {
         await expect(this.errorMessage).toContainText(text);
     }
 }
