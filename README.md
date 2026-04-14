@@ -1,6 +1,6 @@
-# QA Playwright Automation (POM + Fixtures)
+# QA Playwright Automation (POM + Fixtures + Data-Driven)
 
-This project demonstrates UI automation testing using Playwright with **Page Object Model (POM)** and **Fixtures** design pattern using TypeScript.
+This project demonstrates UI automation testing using Playwright with **Page Object Model (POM)**, **Fixtures**, and **Data-Driven Testing** using TypeScript.
 
 ---
 
@@ -23,10 +23,13 @@ project/
 ├── fixtures/
 │   └── baseTest.ts         # Custom Playwright Fixture (Dependency Injection)
 │
-├── tests/
-│   └── login.test.spec.ts  # Test cases using POM + Fixtures
+├── test-data/
+│   └── loginData.json      # Test data (Data-Driven Testing)
 │
-├── playwright.config.ts    # Playwright configuration
+├── tests/
+│   └── login.test.spec.ts  # Test cases using POM + Fixtures + Data
+│
+├── playwright.config.ts
 ├── package.json
 └── README.md
 ```
@@ -37,14 +40,24 @@ project/
 
 ### 1. Page Object Model (POM)
 
-* All locators and actions are stored inside `LoginPage.ts`
-* Test files only contain test scenarios and assertions
+* Encapsulates locators and actions inside `LoginPage.ts`
+* Improves maintainability and reusability
+
+---
 
 ### 2. Playwright Fixtures
 
-* Custom fixture (`baseTest.ts`) is used to inject `LoginPage`
-* Eliminates repetitive object creation in test files
-* Improves scalability and maintainability
+* Custom fixture (`baseTest.ts`) injects `LoginPage` into tests
+* Removes repetitive object initialization
+* Enables cleaner and scalable test structure
+
+---
+
+### 3. Data-Driven Testing
+
+* Test data stored in external JSON (`loginData.json`)
+* Separates test logic from test data
+* Improves flexibility and scalability
 
 ---
 
@@ -53,79 +66,72 @@ project/
 ### Positive Test
 
 * Login with valid credentials
-* Verify successful login (redirect to inventory page)
+* Validate successful login
 
 ### Negative Tests
 
-* Login with empty username
-* Login with empty password
-* Login with invalid credentials
+* Empty username
+* Empty password
+* Invalid credentials
 * Validate error messages
 
 ---
 
 ## ▶️ How to Run Tests
 
-### 1. Install dependencies
+### Install dependencies
 
 ```
 npm install
 ```
 
-### 2. Install Playwright browsers
+### Install Playwright browsers
 
 ```
 npx playwright install
 ```
 
-### 3. Run all tests
+### Run all tests
 
 ```
 npx playwright test
 ```
 
-### 4. Run specific test file
+### Run specific test
 
 ```
 npx playwright test tests/login.test.spec.ts
 ```
 
-### 5. Run in headed mode with HTML report
+### Run with UI mode
 
 ```
-npx playwright test tests/login.test.spec.ts --headed --reporter=html
+npx playwright test --ui
+```
+
+### Run with HTML report
+
+```
+npx playwright test --reporter=html
+npx playwright show-report
 ```
 
 ---
 
 ## 📊 Test Report
 
-### HTML Report (Built-in Playwright)
+Playwright provides built-in HTML reporting:
 
-Generate report:
-
-```
-npx playwright test --reporter=html
-```
-
-Open report:
-
-```
-npx playwright show-report
-```
-
-### Report Features:
-
-* ✅ Test results (Pass/Fail)
+* ✅ Pass / Fail status
 * 📸 Screenshot on failure
-* 🎥 Video recording (if enabled)
-* 🔍 Trace viewer for debugging
+* 🎥 Video recording
+* 🔍 Trace viewer
 
 ---
 
-## ⚙️ Configuration (playwright.config.ts)
+## ⚙️ Configuration
 
-Example:
+Example (`playwright.config.ts`):
 
 ```
 use: {
@@ -140,18 +146,20 @@ use: {
 ## 🎯 Key Highlights
 
 * Clean test structure using POM
-* Reusable and scalable test setup with Fixtures
-* Separation of concerns (Page vs Test vs Setup)
-* Real-world automation best practices
+* Reusable setup with Fixtures (Dependency Injection)
+* Scalable testing with Data-Driven approach
+* Separation of concerns (Page vs Test vs Data)
+* Industry best practices implementation
 
 ---
 
 ## 🔮 Future Improvements
 
+* Dynamic test generation (loop from JSON)
 * CI/CD integration (GitHub Actions)
 * Allure reporting
-* Environment configuration (dev/staging)
-* Multi-page test coverage (cart, checkout, etc.)
+* Multi-page coverage (cart, checkout, etc.)
+* Environment-based configuration
 
 ---
 
@@ -168,7 +176,7 @@ This project is part of my journey to become a **QA Automation Engineer (Remote 
 Focus:
 
 * Writing clean and maintainable automation code
-* Applying industry best practices (POM, Fixtures)
+* Applying industry best practices (POM, Fixtures, Data-Driven)
 * Building scalable automation frameworks
 
 ---
