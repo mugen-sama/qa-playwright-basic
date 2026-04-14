@@ -1,14 +1,16 @@
-# QA Playwright Automation (POM Implementation)
+# 🚀 QA Automation with Playwright (TypeScript + POM)
 
-This project demonstrates UI automation testing using Playwright with **Page Object Model (POM)** design pattern using TypeScript.
+This project demonstrates **UI Automation Testing** using Playwright with **TypeScript** and the **Page Object Model (POM)** design pattern.
+
+Built as part of my journey to become a **QA Automation Engineer (Remote Ready)**.
 
 ---
 
-## 🚀 Tech Stack
+## 🧰 Tech Stack
 
 * Playwright
-* Node.js
 * TypeScript
+* Node.js
 
 ---
 
@@ -21,9 +23,9 @@ pages/
 tests/
   ├── login.demo.spec.ts  # Basic test (without POM)
   ├── login.test.spec.ts  # Test using POM
-  └── example.spec.ts
+  └── example.spec.ts     # Default Playwright example (optional to remove)
 
-playwright.config.ts      # Playwright configuration & reporter
+playwright.config.ts      # Configuration & test settings
 package.json
 README.md
 ```
@@ -32,31 +34,40 @@ README.md
 
 ## 🧠 Design Pattern: Page Object Model (POM)
 
-This project implements **Page Object Model (POM)** to improve:
+This project implements **POM** to improve:
 
-* Maintainability
-* Reusability
-* Readability
+* ✅ Maintainability
+* 🔁 Reusability
+* 📖 Readability
 
-### Concept:
+### 🔍 Concept
 
-* All locators and actions are stored inside `LoginPage.ts`
-* Test files only contain test scenarios and assertions
+* All **locators** and **actions** are defined in `LoginPage.ts`
+* Test files only contain:
+
+  * test scenarios
+  * assertions
 
 ---
 
-## ✅ Test Scenario
+## ✅ Test Scenarios
 
-### Positive Login Test
+### 🟢 Positive Test
 
-* Open website https://www.saucedemo.com/
+* Open: https://www.saucedemo.com/
 * Input valid username & password
 * Click login button
-* Validate successful login (redirect to inventory page)
+* Verify successful login (redirect to inventory page)
+
+### 🔴 Negative Tests
+
+* Login with empty username
+* Login with empty password
+* Login with invalid credentials
 
 ---
 
-## ▶️ How to Run Test
+## ▶️ How to Run Tests
 
 ### 1. Install dependencies
 
@@ -76,16 +87,22 @@ npx playwright install
 npx playwright test
 ```
 
-### 4. Run with UI mode
-
-```
-npx playwright test --ui
-```
-
-### 5. Run specific test
+### 4. Run specific test file
 
 ```
 npx playwright test tests/login.test.spec.ts
+```
+
+### 5. Run in headed mode (see browser)
+
+```
+npx playwright test tests/login.test.spec.ts --headed
+```
+
+### 6. Run with UI mode (interactive)
+
+```
+npx playwright test --ui
 ```
 
 ---
@@ -97,7 +114,7 @@ npx playwright test tests/login.test.spec.ts
 Generate report:
 
 ```
-npx playwright test
+npx playwright test tests/login.test.spec.ts --headed --reporter=html
 ```
 
 Open report:
@@ -106,18 +123,18 @@ Open report:
 npx playwright show-report
 ```
 
-### Report Features:
+### 🔍 Report Features
 
-* ✅ Test result (Pass/Fail)
+* ✅ Pass / Fail status
 * 📸 Screenshot on failure
-* 🎥 Video recording (if enabled)
-* 🔍 Trace viewer for debugging
+* 🎥 Video recording
+* 🧭 Trace Viewer (step-by-step debugging)
 
 ---
 
-## ⚙️ Configuration (playwright.config.ts)
+## ⚙️ Configuration
 
-Example configuration:
+Example (`playwright.config.ts`):
 
 ```
 use: {
@@ -129,13 +146,13 @@ use: {
 
 ---
 
-## 🎯 Future Improvements
+## 🚀 Future Improvements
 
-* ❌ Negative test case (invalid login)
 * 📊 Allure Report integration
 * ⚙️ CI/CD with GitHub Actions
-* 🌐 Cross-browser testing
+* 🌐 Cross-browser test optimization
 * 📈 Test data management
+* 🧩 Fixtures for better scalability
 
 ---
 
@@ -147,12 +164,16 @@ use: {
 
 ## 🔥 Notes
 
-This project is part of my learning journey to become a **QA Automation Engineer (Remote Ready)**.
-
-Focus:
+This project focuses on:
 
 * Clean test structure
 * Scalable automation framework
-* Industry best practices (POM, reporting, CI/CD)
+* Industry best practices:
+
+  * Page Object Model (POM)
+  * Reporting
+  * Test organization
 
 ---
+
+⭐ Feel free to explore, fork, or use this as a reference for your own QA automation projects.
