@@ -1,6 +1,6 @@
-# QA Playwright Automation (POM + Fixtures + Data-Driven)
+# QA Playwright Automation (POM + Fixtures + Data-Driven + Dynamic Tests)
 
-This project demonstrates UI automation testing using Playwright with **Page Object Model (POM)**, **Fixtures**, and **Data-Driven Testing** using TypeScript.
+This project demonstrates UI automation testing using Playwright with **Page Object Model (POM)**, **Fixtures**, **Data-Driven Testing**, and **Dynamic Test Generation** using TypeScript.
 
 ---
 
@@ -61,6 +61,34 @@ project/
 
 ---
 
+### 4. Dynamic Test Generation 🔥
+
+* Negative test cases are generated dynamically using a loop (`forEach`)
+* Each dataset automatically creates a new test case
+* No need to manually write repetitive test scripts
+
+#### Example:
+
+```ts
+loginData.invalidUsers.forEach((loginCase) => {
+
+  test(`Login gagal - ${loginCase.name}`, async ({ loginPage }) => {
+    await loginPage.login(loginCase.username, loginCase.password);
+    await loginPage.verifyLoginErrorMessage(loginCase.error);
+  });
+
+});
+```
+
+#### Benefits:
+
+* ✅ Automatically scales with additional test data
+* ✅ Reduces code duplication
+* ✅ Improves maintainability
+* ✅ Cleaner and more professional test structure
+
+---
+
 ## ✅ Test Scenarios
 
 ### Positive Test
@@ -68,7 +96,7 @@ project/
 * Login with valid credentials
 * Validate successful login
 
-### Negative Tests
+### Negative Tests (Dynamic)
 
 * Empty username
 * Empty password
@@ -148,6 +176,7 @@ use: {
 * Clean test structure using POM
 * Reusable setup with Fixtures (Dependency Injection)
 * Scalable testing with Data-Driven approach
+* Dynamic test generation for automatic test creation
 * Separation of concerns (Page vs Test vs Data)
 * Industry best practices implementation
 
@@ -155,9 +184,9 @@ use: {
 
 ## 🔮 Future Improvements
 
-* Dynamic test generation (loop from JSON)
 * CI/CD integration (GitHub Actions)
 * Allure reporting
+* Test tagging & filtering
 * Multi-page coverage (cart, checkout, etc.)
 * Environment-based configuration
 
@@ -176,7 +205,7 @@ This project is part of my journey to become a **QA Automation Engineer (Remote 
 Focus:
 
 * Writing clean and maintainable automation code
-* Applying industry best practices (POM, Fixtures, Data-Driven)
+* Applying industry best practices (POM, Fixtures, Data-Driven, Dynamic Tests)
 * Building scalable automation frameworks
 
 ---
